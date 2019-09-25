@@ -120,7 +120,23 @@ public class DoubleLinkedListOfInteger {
      * @throws IndexOutOfBoundsException se (index < 0 || index > size())
      */
     public void add(int index, Integer element) {
-        // Implemente este método
+        if (index<0 || index>count) throw new IndexOutOfBoundsException("Index = " + index);
+
+        // Cria o nodo
+        Node n = new Node(element);
+
+        // Pega a referencia para o nodo da posicao "index"
+        Node aux = getRefNode(index);
+
+        // Insere o nodo da lista
+        aux.prev.next = n;
+        n.next = aux;
+        aux.prev = n;
+        n.prev = aux.prev;
+
+        // Atualiza o contador
+        count++;
+
     }
 
     /**
