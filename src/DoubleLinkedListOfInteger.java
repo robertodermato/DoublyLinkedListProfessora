@@ -125,6 +125,15 @@ public class DoubleLinkedListOfInteger {
         // Cria o nodo
         Node n = new Node(element);
 
+        if (index==count){
+            n.prev=trailer.prev;
+            trailer.prev.next=n;
+            n.next=trailer;
+            trailer.prev=n;
+            count++;
+            return;
+        }
+
         // Pega a referencia para o nodo da posicao "index"
         Node aux = getRefNode(index);
 
@@ -148,12 +157,12 @@ public class DoubleLinkedListOfInteger {
         //testa se o elemento existe
         if (contains(element)==false) return false;
 
-        int index=0;
+
         Node aux = header.next;
         for (int i = 0; i < count; i++) {
-            if (aux.element==element) {removeByIndex(index); return true;}
+            if (aux.element==element) {removeByIndex(i); return true;}
                 aux = aux.next;
-                index++;
+
             }
         return false;
     }
@@ -248,7 +257,7 @@ public class DoubleLinkedListOfInteger {
     public String toStringBackToFront(){
         StringBuilder s = new StringBuilder();
         Node aux = trailer.prev;
-        for (int i = count; i >=0; i--) {
+        for (int i = count-1; i >=0; i--) {
             s.append(aux.element.toString());
             s.append("\n");
             aux = aux.prev;
