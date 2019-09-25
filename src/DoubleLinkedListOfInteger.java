@@ -145,7 +145,16 @@ public class DoubleLinkedListOfInteger {
      * @return true se a lista contem o elemento especificado
      */
     public boolean remove(Integer element) {
-        // Implemente este método
+        //testa se o elemento existe
+        if (contains(element)==false) return false;
+
+        int index=0;
+        Node aux = header.next;
+        for (int i = 0; i < count; i++) {
+            if (aux.element==element) {removeByIndex(index); return true;}
+                aux = aux.next;
+                index++;
+            }
         return false;
     }
 
@@ -157,8 +166,11 @@ public class DoubleLinkedListOfInteger {
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
     public Integer set(int index, Integer element) {
-        // Implemente este método
-        return 0;
+        // pega o nodo do indice
+        Node aux = getRefNode(index);
+        Integer elAux = aux.element;
+        aux.element=element;
+        return elAux;
     }
 
     /**
@@ -229,6 +241,17 @@ public class DoubleLinkedListOfInteger {
             s.append(aux.element.toString());
             s.append("\n");
             aux = aux.next;
+        }
+        return s.toString();
+    }
+
+    public String toStringBackToFront(){
+        StringBuilder s = new StringBuilder();
+        Node aux = trailer.prev;
+        for (int i = count; i >=0; i--) {
+            s.append(aux.element.toString());
+            s.append("\n");
+            aux = aux.prev;
         }
         return s.toString();
     }
