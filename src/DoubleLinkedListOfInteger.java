@@ -265,4 +265,87 @@ public class DoubleLinkedListOfInteger {
         return s.toString();
     }
 
+    // retorna um arranjo com os elementos da lista original entre fromIndex (inclusivo) e toIndex (exclusivo).
+    public int[] subList(int fromIndex, int toIndex){
+        int[] arr = new int[toIndex-fromIndex];
+        Node aux = getRefNode(fromIndex);
+        int j=0;
+        for(int i=fromIndex; i<toIndex; i++ ){
+            arr[j]=aux.element;
+            j++;
+            aux=aux.next;
+        }
+        return arr;
+    }
+
+/*
+    // inverte o conteúdo da lista.
+    public void reverse2(){
+        // se lista está vazia é só retornar;
+        if (isEmpty()) return;
+
+        Node aux= header.next;
+        Node ant = header;
+        //Node post = header.next.next;
+
+        for (int i=0; i< count; i++){
+            aux.next=ant;
+            //aux.prev=post;
+            ant.next=ant.prev;
+            //post.prev=post.next;
+            //post.next=aux;
+            ant.prev=aux;
+
+
+            aux=aux.prev;
+            ant=ant.prev;
+            //post=post.prev;
+
+        }
+
+        Node newHeader = trailer;
+        Node newTrailer = header;
+        header=newHeader;
+        trailer=newTrailer;
+
+    }
+
+    */
+
+    public void reverse() {
+        if (isEmpty()) return;
+        Node temp = null;
+        Node current = header.next;
+
+        /* swap next and prev for all nodes of
+         doubly linked list */
+        while (current != null) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+
+        /* Before changing head, check for the cases like empty
+         list and list with only one node */
+        if (temp != null) {
+            header = temp.prev;
+        }
+    }
+
+    // conta o número de ocorrências do elemento passado como parâmetro na lista, retornando este valor.
+    public int contaOcorrencias(int element){
+        if (isEmpty()) return 0;
+        int contador=0;
+
+        Node aux = header.next;
+
+        for (int i=0; i<count; i++){
+            if (aux.element==element) contador++;
+            aux=aux.next;
+        }
+        return contador;
+        }
+
+
 }
