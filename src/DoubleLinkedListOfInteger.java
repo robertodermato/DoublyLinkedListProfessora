@@ -348,4 +348,34 @@ public class DoubleLinkedListOfInteger {
         }
 
 
+    //Implemente um método que percorre a lista e retira elementos repetidos, deixando apenas uma
+    //ocorrência de cada elemento. A assinatura deste método deve ser: public void unique().Teste a
+    //sua implementação para este método na classe App e analise a caracterização O do seu tempo de
+    //execução.
+
+     public void unique(){
+        if (isEmpty()) return;
+        if (count==1) return;
+
+        Node aux = header.next;
+
+
+        for (int i=0; i<count;i++){
+
+          Node compara = aux.next;
+          while (compara!=null){
+              if (aux.element==compara.element){
+                  compara.next.prev=aux;
+                  aux.next=compara.next;
+                  count--;
+                  }
+              compara=compara.next;
+
+          }
+          aux=aux.next;
+        }
+
+
+
+     }
 }

@@ -5,7 +5,7 @@ public class App {
         lista.add(1);
         lista.add(2);
         lista.add(3);
-        lista.add(4);
+        lista.add(3);
         lista.add(5);
         lista.add(6);
 
@@ -49,14 +49,17 @@ public class App {
         //lista.reverse();
         //System.out.println("Conteudo da lista:\n"+lista);
 
-        System.out.println("Testando conta ocorrencias");
-        int conta = lista.contaOcorrencias(3);
-        System.out.println(conta);
-
+        //System.out.println("Testando conta ocorrencias");
+        //int conta = lista.contaOcorrencias(3);
+        //System.out.println(conta);
 
         //System.out.println("Testando sublist");
         //int[] arr = lista.subList(2,4);
         //System.out.println(arr[0] + " " + arr[1]);
+
+        System.out.println("Testando unique");
+        lista.unique();
+        System.out.println("Conteudo da lista:\n"+lista);
     }
 }
 
