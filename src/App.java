@@ -6,7 +6,7 @@ public class App {
         lista.add(2);
         lista.add(3);
         lista.add(3);
-        lista.add(5);
+        lista.add(3);
         lista.add(6);
 
         System.out.println("Conteudo da lista:\n"+lista);
@@ -57,8 +57,10 @@ public class App {
         //int[] arr = lista.subList(2,4);
         //System.out.println(arr[0] + " " + arr[1]);
 
-        System.out.println("Testando unique");
-        lista.unique();
+        //System.out.println("Testando unique");
+        //lista.unique();
+
+        lista.removeAllButLast(3);
         System.out.println("Conteudo da lista:\n"+lista);
     }
 }

@@ -375,7 +375,39 @@ public class DoubleLinkedListOfInteger {
           aux=aux.next;
         }
 
-
-
      }
+
+    // Criar o método boolean RemoveAllbutLast (int elemento) que remove todos os elementos de uma double linked list menos o último. Retorna falso se não remvoveu nenhum.
+
+    public boolean removeAllButLast (int valor){
+
+        if (count<=1) return false;
+
+        int conta = 0;
+
+        Node aux = header.next;
+
+        for (int i=0; i< count; i++){
+            if (aux.element==valor) conta++;
+            aux=aux.next;
+            }
+
+        if (conta<=1) return false;
+
+        int removeu = 0;
+
+        aux=header.next;
+
+        for (int i=0; i< count; i++){
+            if (aux.element==valor && removeu<conta) {
+                aux.next.prev=aux.prev;
+                aux.prev.next=aux.next;
+                removeu++;
+                count--;
+            }
+            aux=aux.next;
+        }
+        return true;
+    }
+
 }
